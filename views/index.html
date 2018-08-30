@@ -21,15 +21,20 @@
 		</nav>
 		<div class="container">
 			{{#if user}}
+			<h4><img src="{{user.avatar}}" style="height: 40px;"> {{user.username}}</h4>
 			<table class="table">
 				<tbody>
 					<tr>
 						<td>Your OPSkins UID</td>
-						<td>{{user.response.uid}}</td>
+						<td>{{user.id}}</td>
 					</tr>
 					<tr>
 						<td>Your SteamID64</td>
-						<td>{{user.response.id64}}</td>
+						<td>{{user.id64}}</td>
+					</tr>
+					<tr>
+						<td>Your Steam TradeURL</td>
+						<td>{{user.options.trade_url}}</td>
 					</tr>
 					<tr>
 						<td>Your OPSkins balance</td>

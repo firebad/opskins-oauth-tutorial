@@ -36,6 +36,7 @@ let sessionMiddleware = session({
 });
 app.use(cookieParser());
 app.use(sessionMiddleware);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -47,10 +48,11 @@ passport.deserializeUser((obj, done) => {
 });
 
 let OpskinsAuth = new opAuth.init({
-	name: 'asdfkjh',
+	name: 'Testing',
 	returnURL: 'http://localhost:3037/auth/opskins/authenticate',
-	apiKey: '8f17c06b290921f2f36f5beedf109d',
-	scopes: 'identity'
+	apiKey: '2087fcb59f2be98c8a5bbfe245669d',
+	scopes: 'identity',
+	mobile: true
 });
 
 passport.use('custom', new CustomStrategy(function (req, done) {
@@ -66,10 +68,10 @@ app.get('/', (req, res) => {
 	res.render('index', {
 		user: req.user
 	});
-	console.log(req.user)
+	console.log(req.user);
 });
 app.get('/auth/opskins', function (req, res) {
-	res.redirect(OpskinsAuth.fetchUrl);
+	res.redirect(OpskinsAuth.getFetchUrl());
 });
 app.get('/auth/opskins/authenticate', passport.authenticate('custom', {
 	failureRedirect: '/'
@@ -80,4 +82,4 @@ app.get('/logout', (req, res) => {
 	req.logout();
 	res.redirect('/');
 });
-server.listen(3037)
+server.listen(3037);
