@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-sm bg-light">
+			<a class="navbar-brand" href="#">My Company</a>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					{{#if user}}
+					<a class="nav-link" href="/logout">LOGOUT</a>
+					{{else}}
+					<a class="nav-link" href="/auth/opskins">LOGIN</a>
+					{{/if}}
+				</li>
+			</ul>
+		</nav>
+		<div class="container">
+			{{#if user}}
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Your OPSkins UID</td>
+						<td>{{user.response.uid}}</td>
+					</tr>
+					<tr>
+						<td>Your SteamID64</td>
+						<td>{{user.response.id64}}</td>
+					</tr>
+					<tr>
+						<td>Your OPSkins balance</td>
+						<td>${{getUsdBal user.balance}}</td>
+					</tr>
+					<tr>
+						<td>Your OPSkins credits</td>
+						<td>{{user.credits}}</td>
+					</tr>
+					<tr>
+						<td>Your ETC balance</td>
+						<td>{{user.cryptoBalances.ETH}}</td>
+					</tr>
+					<tr>
+						<td>Your WAX balance</td>
+						<td>{{user.cryptoBalances.WAX}}</td>
+					</tr>
+				</tbody>
+			</table>
+			{{/if}}
+		</div>
+		
+	</body>
+</html>
