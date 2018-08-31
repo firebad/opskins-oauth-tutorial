@@ -8,7 +8,7 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
-    "opskins-oauth": "^1.0.5",
+    "opskins-oauth": "^1.0.6",
     "passport": "^0.4.0",
     "passport-custom": "^1.0.5",
     "request": "^2.88.0"
